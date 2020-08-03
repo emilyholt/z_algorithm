@@ -1,10 +1,8 @@
 import argparse
 
-from lcs import longest_common_substring
 from z_algo import *
 
 def naive(pattern, input_string):
-    # z_input = "AABAABCAXAABAABCYAAAAB"
     z_input = pattern + "$" + input_string
     z_box = find_z_box(z_input)
     right_endpoints = find_right_endpoints(z_input, z_box)
@@ -27,7 +25,7 @@ def naive(pattern, input_string):
 def advanced(pattern, input_string):
     z_input = pattern + "$" + input_string
     # z_input = "AABAABCAXAABAABCYAAAAB"
-    z_box = z_algo(z_input)
+    z_box = z_algo_demo(z_input)
 
     # Formatting for printing
     indices = [str(x) + " " if x < 10 else str(x) for x in range(len(z_input))]
@@ -40,7 +38,7 @@ def advanced(pattern, input_string):
     print(f"Test string:        {test_string}")
     print(f"Resulting z-box:    {z_box}")
     print(f"\n################################################\n")
-    longest_common_substring(z_input, z_box)
+    print_pattern(z_input, z_box)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()

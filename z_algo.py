@@ -1,8 +1,6 @@
-
-
 from print_helpers import *
 
-def find_z_box(input_string, descriptive=True):
+def find_z_box(input_string, descriptive=False):
     z_box = [0] * len(input_string)
     
     left_endpoints = [0] * len(input_string)
@@ -50,7 +48,7 @@ def find_left_endpoints(input_string, z_box, right_endpoints):
 
     return left_endpoints
 
-def z_algo(input_string, descriptive=True):
+def z_algo_demo(input_string, descriptive=True):
     z_box = [0] * len(input_string)
     r = 0
     l = 0
@@ -77,20 +75,21 @@ def z_algo(input_string, descriptive=True):
             while pattern_index + k < len(input_string)\
              and input_string[pattern_index] == input_string[k + pattern_index]: 
 
-                if descriptive:
-                    print(f"\nCurrent Index: {k}")
-                    print(f"Found new match: input[{k + pattern_index}] = {input_string[k + pattern_index]} = input[{pattern_index}] = {input_string[pattern_index]}")
-                    pretty_print_zbox(input_string, pattern_index, k)
+
+                print(f"\nCurrent Index: {k}")
+                print(f"Found new match: input[{k + pattern_index}] = {input_string[k + pattern_index]} = input[{pattern_index}] = {input_string[pattern_index]}")
+                pretty_print_zbox(input_string, pattern_index, k)
 
                 pattern_index += 1
             
-            if pattern_index == 0:
+            if pattern_index == 0 and descriptive:
                 print(f"No match found; Inheriting r & l values")
             else :
                 z_box[k] = pattern_index
                 l = k
                 r = l + pattern_index - 1
-                print(f"Match found! Updating r = {r} & l = {l}")
+                if descriptive:
+                    print(f"Match found! Updating r = {r} & l = {l}")
 
         else:
             print(f"\n################################################")
@@ -100,21 +99,21 @@ def z_algo(input_string, descriptive=True):
             beta = r - k + 1
             
             if z_box[k_prime] < beta:
-                print(f"Case 2a: Z(k') = {z_box[k_prime]} < |B| = {beta} ")
                 z_box[k] = z_box[k_prime]
+                print(f"Case 2a: Z(k') = {z_box[k_prime]} < |B| = {beta} ")
                 print(f"Inheriting z_box[k] = z_box[k_prime] = {z_box[k_prime]}")
 
             else:
-                print(f"Case 2b: Z(k') = {z_box[k_prime]} ≥ |B| = {beta} ")
+                
                 i = r + 1
                 j = beta
+                print(f"Case 2b: Z(k') = {z_box[k_prime]} ≥ |B| = {beta} ")
                 print(f"Matching P[r + 1...] to P[B + 1...]")
                 while i < len(input_string) and j < len(input_string) and input_string[i] == input_string[j]:
                     
-                    if descriptive:
-                        print(f"\nCurrent Index: {k}")
-                        print(f"Found new match: input[{i}] = {input_string[i]} = input[{j}] = {input_string[j]}")
-                        pretty_print_zbox(input_string, j, k)
+                    print(f"\nCurrent Index: {k}")
+                    print(f"Found new match: input[{i}] = {input_string[i]} = input[{j}] = {input_string[j]}")
+                    pretty_print_zbox(input_string, j, k)
                     i += 1
                     j +=1
                     
@@ -123,6 +122,53 @@ def z_algo(input_string, descriptive=True):
                 r = i - 1
                 print(f"Updating r = {r} & l = {l}")
     return z_box
+
+
+def z_algo_streamlined(input_string, descriptive=True):
+    z_box = [0] * len(input_string)
+    r = 0
+    l = 0
+    
+    if input_string[1] == input_string[0]:
+        z_box[1] = z_box[1] + 1
+        r = 1 
+        l = 1
+
+    # Algorithm portion: assume we know r & l at step k - 1
+    for k in range(2, len(input_string)):
+        
+        if k > r: 
+            pattern_index = 0
+            while pattern_index + k < len(input_string)\
+             and input_string[pattern_index] == input_string[k + pattern_index]: 
+
+                pattern_index += 1
+            
+            if pattern_index != 0 :
+                z_box[k] = pattern_index
+                l = k
+                r = l + pattern_index - 1
+        else:
+            k_prime = k - l 
+            beta = r - k + 1
+            
+            if z_box[k_prime] < beta:
+                z_box[k] = z_box[k_prime]
+            
+            else:
+                i = r + 1
+                j = beta
+                while i < len(input_string) and j < len(input_string) and input_string[i] == input_string[j]:
+                    i += 1
+                    j +=1
+                    
+                z_box[k] = i - k
+                l = k
+                r = i - 1
+    return z_box
+
+
+
 
 
 

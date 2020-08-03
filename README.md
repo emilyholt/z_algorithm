@@ -1,7 +1,6 @@
 # Z Algorithm Implementation
 Lightning fast pattern matching in Python
 
-<!-- ![Z Algorithm Demo](z_algo.gif) -->
 <img src="demos/z_algo.gif" alt="z_algo_demo" width="100%"/>
 
 ### Setup + Install

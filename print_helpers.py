@@ -1,3 +1,4 @@
+import operator
 import time
 
 from colorama import init, Fore, Back, Style
@@ -5,7 +6,7 @@ from colorama import init, Fore, Back, Style
 init()
 
 def pretty_print_current_index(input_string, current_index):
-    time.sleep(0.5)
+    # time.sleep(0.5)
     beginning_string = "["
     current_string = ""
     end_string = ""
@@ -64,7 +65,7 @@ def pretty_print_current_index(input_string, current_index):
             , end='\n')
 
 def pretty_print_zbox(input_string, pattern_index, current_index):
-    time.sleep(0.5)
+    # time.sleep(0.5)
     pattern_string = ""
     intermediate_string = ""
     z_string = ""
@@ -87,3 +88,13 @@ def pretty_print_zbox(input_string, pattern_index, current_index):
         + Fore.BLUE + z_string
         + Fore.RESET + end_string
         , end='\n')
+
+
+
+def print_pattern(input_string, z_box):
+
+    index, value = max(enumerate(z_box), key=operator.itemgetter(1))
+    stop = index + int(value)
+
+    print(f"Longest pattern match found at index [{index}] = {value}")
+    print(f"Substring = {input_string[index:stop]}")
