@@ -1,10 +1,11 @@
 # Z Algorithm Implementation
 Lightning fast pattern matching in Python
 
-![Z Algorithm Demo](z_algo.gif)
+<!-- ![Z Algorithm Demo](z_algo.gif) -->
+<img src="demos/z_algo.gif" alt="z_algo_demo" width="100%"/>
 
 ### Setup + Install
-The standalone `main.py` requires the `colorarma` library for the visual demo. It is strongly encouraged to use [Python virtual environments](https://virtualenv.pypa.io/en/stable/installation.html)(`virtualenv`) when installing external libraries.
+The standalone `main.py` requires the `colorarma` library for the visual demo. It is strongly encouraged to use [Python virtual environments](https://virtualenv.pypa.io/en/stable/installation.html) when installing external libraries.
 
 ```
 virtualenv virt
