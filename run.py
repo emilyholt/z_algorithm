@@ -1,4 +1,6 @@
 import argparse
+
+from lcs import longest_common_substring
 from z_algo import *
 
 def naive(pattern, input_string):
@@ -37,6 +39,8 @@ def advanced(pattern, input_string):
     print(f"Indices:            {indices}")
     print(f"Test string:        {test_string}")
     print(f"Resulting z-box:    {z_box}")
+    print(f"\n################################################\n")
+    longest_common_substring(z_input, z_box)
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
