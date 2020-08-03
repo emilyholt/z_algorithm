@@ -1,8 +1,11 @@
+import time
+
 from colorama import init, Fore, Back, Style
 
 init()
 
 def pretty_print_current_index(input_string, current_index):
+    time.sleep(0.5)
     beginning_string = "["
     current_string = ""
     end_string = ""
@@ -14,20 +17,29 @@ def pretty_print_current_index(input_string, current_index):
     # Separate the pattern & z-boxes into strings
     for i, elem in enumerate(input_string):
         if i < current_index:
-            beginning_string = beginning_string + str(elem) + ", "
-            beginning_indices_string = beginning_indices_string + str(i) + " , " if i < 10 else beginning_indices_string + str(i) + ", "
+            beginning_string = beginning_string + str(elem) + " , "
+            if i < 10:
+                beginning_indices_string = beginning_indices_string + str(i) + " , "  
+            else:
+                beginning_indices_string = beginning_indices_string + str(i) + ", "
 
         elif i == current_index:
-            current_string = current_string + str(elem) 
-            current_index_string = current_index_string + str(current_index) + " " if current_index < 10 else current_index_string + str(current_index)
+            current_string = current_string + str(elem) + " "
+            if current_index < 10:
+                current_index_string = current_index_string + str(current_index) + " "  
+            else: 
+                current_index_string = current_index_string + str(current_index)
 
         elif i > current_index and i < len(input_string) - 1:
-            end_string = end_string + str(elem) + ", "
-            ending_indices_string = ending_indices_string + str(i) + " , " if i < 10 else ending_indices_string + str(i) + ", "
+            end_string = end_string + str(elem) + " , "
+            if i < 10: 
+                ending_indices_string = ending_indices_string + str(i) + " , " 
+            else: 
+                ending_indices_string = ending_indices_string + str(i) + ", "
         
         else:
             end_string = end_string + str(elem)
-            ending_indices_string = ending_indices_string + str(i) if i < 10 else ending_indices_string + str(i)
+            ending_indices_string = ending_indices_string + str(i) 
 
     # Pretty printing of our color-coded z-box
     if current_index < len(input_string) - 1:
@@ -52,6 +64,7 @@ def pretty_print_current_index(input_string, current_index):
             , end='\n')
 
 def pretty_print_zbox(input_string, pattern_index, current_index):
+    time.sleep(0.5)
     pattern_string = ""
     intermediate_string = ""
     z_string = ""

@@ -1,23 +1,24 @@
 # Z Algorithm Implementation
 Lightning fast pattern matching in Python
 
+![Z Algorithm Demo](z_algo.gif)
 
 ### Setup + Install
-The standalone `main.py` has no dependencies, and can by run with Python3
-
-For a more interactive use-case, use the Jupyter Notebook, which will require installing the Python `jupyter` library. It is strongly encouraged to use [Python virtual environments](https://virtualenv.pypa.io/en/stable/installation.html)(`virtualenv`) when installing these external libraries.
+The standalone `main.py` requires the `colorarma` library for the visual demo. It is strongly encouraged to use [Python virtual environments](https://virtualenv.pypa.io/en/stable/installation.html)(`virtualenv`) when installing external libraries.
 
 ```
 virtualenv virt
 source virt/bin/activate
-pip install jupyter
-jupyter notebook
+pip install -r requirements.txt
 ```
 
 ### Usage
 
 Standalone script:
-`python main.py <PATTERN> <INPUT STRING>`
+`python run.py <PATTERN> <INPUT STRING>`
 
-Jupyter Notebook:
-`jupyter notebook`
+
+### Z Algorithm Intuition
+TODO: Explain algo mechanics here
+
+
