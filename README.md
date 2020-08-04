@@ -19,11 +19,11 @@ Standalone script:
 
 
 ### Z Algorithm Intuition
-Z algorithm is a linear time string matching algorithm which runs in O(`n + m`) complexity. Z algorithm is used to find all occurrence of a pattern (size `m`) in a string S (of size `n`). <br><br>
+Z algorithm is a linear time string matching algorithm which runs in O(`n + m`) complexity. Z algorithm is used to find all occurrence of a pattern (size `m`) in a string S (of size `n`). <br>
 
-Our goal is to create a Z array of the same length as our string, where the element Z[k] of Z array stores length of the longest substring starting from our input_string[k] that matches our pattern.<br><br> 
+Our goal is to create a Z array of the same length as our string, where the element Z[k] of Z array stores length of the longest substring starting from our input_string[k] that matches our pattern.<br> 
 
-We begin by concatenating our pattern `P` with our input string `T` to obtain `P$T` (`$` being a character not found in either `P` or `T`). We then process our Z input `P$T` by iterating over the letters in the string (index `k` from 0 to `n` - 1) and maintain two pointers `l` and `r`,  where 1 ≤ `l` ≤ `k` ≤ `r`, and the interval of the z-input from `l` to `r` matches a substring of the pattern. <br><br>
+We begin by concatenating our pattern `P` with our input string `T` to obtain `P$T` (`$` being a character not found in either `P` or `T`). We then process our Z input `P$T` by iterating over the letters in the string (index `k` from 0 to `n` - 1) and maintain two pointers `l` and `r`,  where 1 ≤ `l` ≤ `k` ≤ `r`, and the interval of the z-input from `l` to `r` matches a substring of the pattern. <br>
 
 As we process the Z-input, at each new index we encounter one of two cases:
 1. if `k` > `r`: then there is no pattern substring that encapsulates the character of the Z-input at index `k` (no Z-box 'jumps over' `k`). Now we must try to match our z-input[`k`] to z-ipnut[`0`] and compute how many characters, starting at index `k` match the prefix of our z-input, OR
