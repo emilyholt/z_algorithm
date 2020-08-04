@@ -70,7 +70,7 @@ def z_algo_demo(input_string, descriptive=True):
             print(f"\n################################################")
             pretty_print_current_index(input_string, k)
             print(f"\nIndex [{k}] Case 1: No z-box jumps over k")
-            print(f"Matching P[{k}] tp prefix")
+            print(f"Matching P[{k}] to prefix")
             pattern_index = 0
             while pattern_index + k < len(input_string)\
              and input_string[pattern_index] == input_string[k + pattern_index]: 
