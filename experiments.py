@@ -1,4 +1,5 @@
 import argparse
+import os
 import time
 
 from z_algo import *
@@ -13,7 +14,15 @@ def advanced(pattern, input_string):
     z_input = pattern + "$" + input_string
     z_box = z_algo_streamlined(z_input, descriptive=False)
 
-def main(pattern, input_string):
+def large_file_test():
+    test_file = 'needle_in_a_haystack.txt'
+    file_size = os.stat(test_file).st_size
+    print(f"Test file size: {file_size}")
+    with open(test_file, 'r') as f:
+        data = f.read().replace('\n', '')
+    run_comparison("needle", data)
+
+def run_comparison(pattern, input_string):
 
     naive_start = time.time()
     naive(pattern, input_string)
@@ -32,8 +41,9 @@ def main(pattern, input_string):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser()
-    parser.add_argument("pattern", help="pattern to search for")
-    parser.add_argument("input_string", help="pattern to search for")
-    args = parser.parse_args()
-    main(args.pattern, args.input_string)
+    # parser = argparse.ArgumentParser()
+    # parser.add_argument("pattern", help="pattern to search for")
+    # parser.add_argument("input_string", help="pattern to search for")
+    # args = parser.parse_args()
+    # main(args.pattern, args.input_string)
+    large_file_test()
