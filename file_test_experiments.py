@@ -1,10 +1,13 @@
 '''
 Generate a 'needle(s) in a haystack' file to test z-algorithm
 '''
+import argparse
+import os
+import random
+
+from tqdm import tqdm
 
 from experiments import run_comparison
-import random
-from tqdm import tqdm
 
 output_file = "needle_in_a_haystack.txt"
 
@@ -35,5 +38,5 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument("file_size", help="approx size of file to generate")
     args = parser.parse_args()
-    generate_test_file(args.file_size)
+    generate_test_file(int(args.file_size))
     file_test()
