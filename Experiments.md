@@ -1,7 +1,6 @@
 # Experiments 
 
 ### Usage
-Using Z Algorithm Implementation
 
 For simple, configurable experiments, user the `experiments.py` script, which can be run:
 ```

@@ -23,6 +23,11 @@ Standalone script:
 
 ******************************
 
+### Results
+See the [Experiments page](Experiments.md) for timed comparisons of my Z-algorithm implementation with my implementation of naive string matching, as well as the Boyer-Moore algorithm implementation
+
+******************************
+
 ### Z Algorithm Intuition
 Z algorithm is a linear time string matching algorithm which runs in O(`n + m`) complexity. Z algorithm is used to find all occurrence of a pattern (size `m`) in a string S (of size `n`). <br>
 
@@ -38,4 +43,9 @@ As we process the Z-input, at each new index we encounter one of two cases:
     2. Z-array[`k'`] ≥ `B` where `B` = `r` - `k` + 1. Then we know we can extend our Z-box at `k`. So `l` = `k` and begin matching Z-input[`k`] to Z-input[`0`]. We then update `r` = `k` + `j` where `j` = the number of characters of the prefix we match with starting at Z-input[`k`]
 
 
+******************************
 
+### Implementation Details & Challenges
+The implementation is my own work, taken almost exclusively from the course notes. The challenges that arose from converting a high-level description were mostly off-by-one based. Descriptions of the algorithm typically use 1-indexed arrays and inclusive ranges. Python, however, uses 0-indexed arrays, and for ranges that are in the form `list[start:stop]`, Python includes the `start` index, but excludes the `stop` index.
+
+For more information and other reference implementations, please check out [this Geeks for Geeks blog post](https://www.geeksforgeeks.org/z-algorithm-linear-time-pattern-searching-algorithm/), and [this HackerEarth blog post](https://www.hackerearth.com/practice/algorithms/string-algorithm/z-algorithm/tutorial/)
